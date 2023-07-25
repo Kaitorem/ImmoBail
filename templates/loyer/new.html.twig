@@ -1,0 +1,10 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %}Nouveau loyer{% endblock %}
+{% block content %}
+    <h1>Nouveau loyer</h1>
+
+    {{ include('loyer/_form.html.twig') }}
+
+    <a class="btn btn-info" href="{{ path('loyer_index') }}">Retour à la liste de loyer</a>
+{% endblock %}

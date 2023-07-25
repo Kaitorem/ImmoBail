@@ -1,0 +1,58 @@
+{% extends 'home/index.html.twig' %}
+
+{% block title %}Création du compte{% endblock %}
+
+{% block _cs_connexion %}cs-w-connexion-large{% endblock %}
+
+{% block class_body %}register{% endblock %}
+
+{% block _inscription %}
+    <div class="bg-white">
+        <div class="mb-2 text-right mr-n2 mt-n2">
+            <a href="{{ path('home') }}" class="link-dark">
+                <i class="fas fa-times fa-1x"></i>
+            </a>
+        </div>
+        <h6 class="text-center mb-3">Inscription</h6>
+
+        {{ form_start(registrationForm) }}
+
+        {{ form_widget(registrationForm.nom, {
+            attr: {
+                placeholder: 'Nom',
+                class: 'mr-lg-1 w-100'
+            },
+        }) }}
+
+        {{ form_row(registrationForm.dateNaissance, {
+            attr: {
+                class: 'mr-lg-1 my-1 w-100 '
+            },
+            label: ' '
+        }) }}
+
+        {{ form_row(registrationForm.email, {
+            label: ' ',
+            attr: {
+                class: 'mr-lg-1 register-email w-100',
+                placeholder: 'test@immob.com'
+            }
+            })
+        }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: ' ',
+            attr: {
+                'placeholder': 'Mot de passe',
+                'class': 'register-password mt-1 mr-lg-1 w-100'
+            }
+        }) }}
+
+        <div class="text-center my-3">
+            <button type="submit" class="btn btn-success btn-sm" title="Créer votre compte">Inscription</button>
+        </div>
+        {{ form_end(registrationForm) }}
+        <div>
+            Déjà inscrit ? <a href="{{ path('app_login') }}" class="cs-orange">Se connecter</a>
+        </div>
+    </div>
+{% endblock %}

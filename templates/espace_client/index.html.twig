@@ -1,0 +1,41 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %}List des biens{% endblock %}
+
+{% block content %}
+    {% for location in locations %}
+        <div class="row bg-white my-3 cs-form">
+            <div class="col-lg-4">
+                {% if location.image %}
+                    <img width="200" src="{{ vich_uploader_asset(location.image, 'imageFile') }}"
+                         alt="Image du bien {{ location.nom }}">
+                {% else %}
+                    <img width="200" src="https://via.placeholder.com/200x150"
+                         alt="Image du bien {{ location.nom }}">
+                {% endif %}
+
+            </div>
+            <div class="col-lg-7">
+                <div class="row">
+                    <div class="col-9">
+                        <h5 class="text-primary">
+                            <a href="{{ path('espace_voir_bien', {id: location.id}) }}">{{ location.nom }}</a>
+                        </h5>
+                        <p class="text-muted">
+                            {{ location.ville }} {{ location.codePostale }}
+                        </p>
+                        <p class="mt-1">
+                           <span class="text-muted">Locataire : </span>
+                            {{ location.locataire ? location.locataire.nom : '' }}
+                        </p>
+
+                        <p>{{ location.dateCreation ? location.dateCreation|date('d/m/Y') }}</p>
+                    </div>
+                    <div class="col-3 text-bold text-right text-primary">
+                        {{ location.prixLoyer }} €
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %}Loyer {{ loyer.mois }}{% endblock %}
+{% block content %}
+    <h1>Loyer</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ loyer.id }}</td>
+            </tr>
+            <tr>
+                <th>Mois</th>
+                <td>{{ loyer.mois }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ loyer.etat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-info my-1" href="{{ path('loyer_index') }}">Retour à la liste de loyer</a>
+
+    <a class="btn btn-success" href="{{ path('loyer_edit', {'id': loyer.id}) }}">Modifier</a>
+
+    {{ include('loyer/_delete_form.html.twig') }}
+{% endblock %}

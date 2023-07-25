@@ -1,0 +1,78 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %}Details{% endblock %}
+
+{% block content %}
+    <h1>Bien</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ location.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ location.nom }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ location.type }}</td>
+            </tr>
+            <tr>
+                <th>Amenagement</th>
+                <td>{{ location.amenagement }}</td>
+            </tr>
+            <tr>
+                <th>SurfaceHabitable</th>
+                <td>{{ location.surfaceHabitable }}</td>
+            </tr>
+            <tr>
+                <th>SurfaceTerrain</th>
+                <td>{{ location.surfaceTerrain }}</td>
+            </tr>
+            <tr>
+                <th>NombrePiece</th>
+                <td>{{ location.nombrePiece }}</td>
+            </tr>
+            <tr>
+                <th>ClasseEnergetique</th>
+                <td>{{ location.classeEnergetique }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ location.description }}</td>
+            </tr>
+            <tr>
+                <th>PrixLoyer</th>
+                <td>{{ location.prixLoyer }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ location.adresse }}</td>
+            </tr>
+            <tr>
+                <th>CodePostale</th>
+                <td>{{ location.codePostale }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ location.ville }}</td>
+            </tr>
+            <tr>
+                <th>Archived</th>
+                <td>{{ location.archived ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>DateCreation</th>
+                <td>{{ location.dateCreation ? location.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('espace_mes_biens') }}">Retour au biens</a>
+
+    <a href="{{ path('location_edit', {'id': location.id}) }}">edit</a>
+
+    {{ include('location/_delete_form.html.twig') }}
+{% endblock %}

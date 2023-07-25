@@ -1,0 +1,80 @@
+{% extends "base.html.twig" %}
+
+{% block class_body %}Voir le bien {{ location.nom }}{% endblock %}
+
+{% block body %}
+
+    <div class="mt-5">
+        <a href="{{ path('espace_mes_biens') }}">
+            <span class="fa fa-arrow-circle-left fa-3x"></span>
+        </a>
+    </div>
+
+    <div class="text-right">
+        <a class="btn btn-info" href="{{ path('espace_location_edit', {'id': location.id}) }}">Modifier le bien</a>
+        <a class="btn btn-danger ml-1" onclick="return confirm('Vous êtes sur de vouloir supprimé ?');" href="{{ path('espace_location_delete', {'id': location.id}) }}">Supprimer</a>
+    </div>
+
+    <div class="mt-5">
+        <h3 class="">{{ location.nom }}</h3>
+        <p>{{ location.adresse }}</p>
+
+        <p>{{ location.codePostale }}</p>
+
+        <p>{{ location.ville }}</p>
+        <div class="">
+            {% if location.image  %}
+                <img src="{{ vich_uploader_asset(location.image, 'imageFile') }}" alt="image {{ location.nom }}" width="300">
+            {% endif %}
+        </div>
+
+        <h5 class="text-right">{{ location.prixLoyer }} €</h5>
+    </div>
+    <div class="text-muted text-small">
+       Mise en ligne le : {{ location.dateCreation ? location.dateCreation|date('d/m/Y à H:i') }}
+    </div>
+    <p>Type de logement : {{ location.type }}</p>
+    {% if location.amenagement %}
+    <p>Amenagement : {{ location.amenagement }}</p>
+    {% endif %}
+    {% if location.surfaceHabitable %}
+    <p>Surface habitable : {{ location.surfaceHabitable }} m²</p>
+    {% endif %}
+    {% if location.surfaceTerrain %}
+    <p>Surface terrain : {{ location.surfaceTerrain }} m²</p>
+    {% endif %}
+    {% if location.nombrePiece %}
+    <p>Nombre de piece : {{ location.nombrePiece }} pieces</p>
+    {% endif %}
+    {% if location.classeEnergetique %}
+    <p>Classe energetique : {{ location.classeEnergetique }}</p>
+    {% endif %}
+    {% if location.description %}
+    <p>Description : {{ location.description }}</p>
+    {% endif %}
+    <hr>
+    {% if location.locataire %}
+        {% if location.locataire.nom %}
+            Nom : <p>{{ location.locataire.nom }}</p>
+        {% endif %}
+        {% if location.locataire.status %}
+            Status : <p>{{ location.locataire.status }}</p>
+        {% endif %}
+        {% if location.locataire.dateNaissance %}
+            Date de naissance : <p>{{ location.locataire.dateNaissance|date('d/m/Y') }}</p>
+        {% endif %}
+        {% if location.locataire.email %}
+            Email : <p>{{ location.locataire.email }}</p>
+        {% endif %}
+    {% endif %}
+
+    {% for loyer in loyers  %}
+        <div class="d-inline-flex cs-btn-radius p-2 {{ loyer.etat ? 'bg-success' : 'bg-danger' }}" title="{{ loyer.mois }}">
+            {{ loyer.mois }}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+
+

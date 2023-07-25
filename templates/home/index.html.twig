@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Accueil {% endblock %}
+{% block class_body %} homepage {% endblock %}
+
+{% block body %}
+    <div class="mt-5 d-flex align-items-start flex-column bd-highlight mb-3 cs-home">
+        <div class="mb-auto p-2 align-self-center">
+            <h1 class="text-white h1 text-uppercase">Gérer vos biens immobiliers</h1>
+        </div>
+        <div class="p-2 align-self-center">
+            <div class="d-flex justify-content-between {% block _cs_connexion %}cs-w-connexion{% endblock %}">
+                <div class="align-self-center">
+                    {% block _inscription %}
+                        <a href="{{ path('app_register') }}" class="btn btn-success cs-btn-radius">Inscription</a>
+                    {% endblock %}
+                </div>
+                <div class="align-self-center">
+                    <span class="cs-or-logic cs-orange">OR</span>
+                </div>
+                <div class="align-self-center">
+                    {% block _login %}
+                        <a href="{{ path('app_login') }}" class="btn btn-success cs-btn-radius">Connexion</a>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

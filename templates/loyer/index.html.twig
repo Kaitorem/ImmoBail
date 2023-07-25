@@ -1,0 +1,39 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %}Nouveau loyer{% endblock %}
+{% block content %}
+    <div class="text-right my-3">
+        <a href="{{ path('loyer_new') }}">Nouveau loyer</a>
+    </div>
+
+    <h1>Ajouter un loyer</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mois</th>
+                <th>Appartements</th>
+                <th>Payé</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for loyer in loyers %}
+            <tr>
+                <td>{{ loyer.mois }}</td>
+                <td>
+
+                    {% if loyer.location %}
+                        {{ loyer.location.nom }}
+                    {% endif %}
+                </td>
+                <td>{{ loyer.etat ? 'oui' : 'non' }}</td>
+                <td>
+                    <a href="{{ path('loyer_show', {'id': loyer.id}) }}">Voir</a>
+                    <a href="{{ path('loyer_edit', {'id': loyer.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

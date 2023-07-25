@@ -1,0 +1,32 @@
+{% extends "layout/base.html.twig" %}
+
+{% block class_body %}modification{% endblock %}
+
+{% block content %}
+    {{ form_start(form, {attr: {class: 'cs-form bg-light'}}) }}
+        {{ form_row(form.nom, {
+            label: 'Nom du bien *',
+            attr: {
+                placeholder: 'Quels est le nom de votre bien ?'
+            }
+        }) }}
+        {{ form_row(form.type, {
+            label: 'Type du bien *',
+        }) }}
+        <div class="d-flex">
+            {{ form_row(form.amenagement, {
+                label: "C'est bien est :",
+            }) }}
+        </div>
+
+        {{ form_rest(form) }}
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}
+
+
+
+

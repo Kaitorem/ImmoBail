@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    {% include 'layout/_header.html.twig' %}
+
+    <div class="row">
+        <div class="offset-2 col-8 cs-home">
+            <div class="p-2 align-self-center">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

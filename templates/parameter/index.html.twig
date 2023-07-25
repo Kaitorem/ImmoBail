@@ -1,0 +1,11 @@
+{% extends "layout/base.html.twig" %}
+
+{% block class_body %}List des biens{% endblock %}
+{% block title %}Modification de profile{% endblock %}
+{% block content %}
+    {{ form(form) }}
+
+    <div class="text-right my-3">
+        <a class="btn btn-danger" onclick="return confirm('Vous êtes sur de vouloir supprimé ?');" href="{{ path('parameter_archived') }}">Supprimé ce compte</a>
+    </div>
+{% endblock %}

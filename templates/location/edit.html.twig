@@ -1,0 +1,13 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %}Modifier {{ location.nom }}{% endblock %}
+
+{% block content %}
+    <h1>Modifier {{ location.nom }}</h1>
+
+    {{ include('location/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+    <a class="btn btn-info my-1" href="{{ path('espace_mes_biens') }}">Retour au biens</a>
+
+    {{ include('location/_delete_form.html.twig') }}
+{% endblock %}
